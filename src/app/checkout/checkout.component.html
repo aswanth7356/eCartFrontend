@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="p-5 d-flex justify-content-center align-items-center" style="height: 90vh;">
+    <div class="w-50 border bg-light p-5 shadow">
+
+        <form action="" [formGroup]="payForm" *ngIf="!checkoutStatus">
+            <h5 class="text-center mb-4" >Checkout Form</h5>
+            <input type="text" formControlName="username" placeholder="UserName" class="form-control mb-3">
+            <div class="text-danger" *ngIf="payForm.controls.username.invalid &&  payForm.controls.username.touched">
+                *Invalid username
+            </div>
+
+            <input type="text" formControlName="address" placeholder="Address" class="form-control mb-3">
+            <div class="text-danger" *ngIf="payForm.controls.address.invalid &&  payForm.controls.address.touched">
+                *Invalid Address
+            </div>
+
+            <input type="number" formControlName="pincode" placeholder="PinCode" class="form-control mb-3">
+            <div class="text-danger" *ngIf="payForm.controls.pincode.invalid &&  payForm.controls.pincode.touched">
+                *Invalid Pincode
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-danger">
+                    Cancel
+                </button>
+
+                <button class="btn btn-success" [disabled]="payForm.invalid" (click)="checkoutClick()">
+                    Proceed To Pay
+                </button>
+            </div>
+        </form>
+
+        <div *ngIf="checkoutStatus" class="border bg-light p-4" >
+            <h3 class="text-warning">Payment Details</h3>
+            <p>UserName : <span>{{payForm.controls.username.value}}</span></p>
+            <p>Address : <span>{{payForm.controls.address.value}}</span></p>
+            <p>Pincode : <span>{{payForm.controls.pincode.value}}</span></p>
+            <h2>Payment to proceed : <span>{{total}}</span></h2>
+            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+        </div>
+
+    </div>
+</div>

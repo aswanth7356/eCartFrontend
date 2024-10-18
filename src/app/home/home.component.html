@@ -1,0 +1,45 @@
+<!--  for this ecommerce template => startbootstrap.com -> select your template -> View source code -> dist -> index.html -->
+<app-header></app-header>
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Shop in style</h1>
+            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        </div>
+    </div>
+</header>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5" *ngIf="(products|search:keyword).length>0; else elsecase">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+            <div class="col mb-5" *ngFor="let i of products|search:keyword">
+                <div class="card shadow h-100"  style="cursor: pointer;">
+                    <!-- Product image-->
+                    <img class="card-img-top p-3" src={{i?.image}} routerLink="/view/{{i?.id}}" alt="..." height="200px" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{i?.title}}</h5>
+                            <!-- Product price-->
+                            ${{i?.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-between bg-light border shadow">
+                        <button class="btn" (click)="addWish(i)"><i class="fa-solid fa-heart" style="color: #ff0000;"></i></button>
+                        <button class="btn" (click)="addToCart(i)"><i class="fa-solid fa-cart-shopping " style="color: #0045bd;"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <ng-template #elsecase>
+        <h2 class="text-center text-info my-5">No Products Available!! </h2>
+    </ng-template>
+
+</section>

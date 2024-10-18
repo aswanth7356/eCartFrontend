@@ -1,0 +1,41 @@
+<app-header></app-header>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h3 class="text-center my-5">WishList Items</h3>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
+            *ngIf="wishListItem?.length>0;else elsedata">
+
+
+            <div class="col mb-5" *ngFor="let i of wishListItem">
+                <div class="card h-100 shadow">
+                    <!-- Product image-->
+                    <a routerLink="/view/{{i?.id}}">
+                        <img class="card-img-top p-3" src={{i?.image}} height="230px" alt="..." />
+
+                    </a>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{i?.title}}</h5>
+                            <!-- Product price-->
+                            ${{i?.price}}
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between p-4 bg-light border shadow">
+                        <button class="btn" (click)="removeFromWish(i?._id)"><i class="fa-solid fa-heart-circle-xmark fa-xl"
+                                style="color: #e60000;"></i></button>
+                        <button class="btn" (click)="addToCart(i)"><i class="fa-solid fa-cart-plus fa-xl" style="color: #135bd8;"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <ng-template #elsedata>
+            <div class="p-5">
+                <h3 class="text-center text-danger">No WishList Items Added yet!!</h3>
+            </div>
+        </ng-template>
+    </div>
+</section>

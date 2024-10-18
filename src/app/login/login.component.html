@@ -1,0 +1,29 @@
+<div class="container-fluid d-flex justify-content-center align-items-center mt-5 mb-5" style="height: 100%;">
+
+    <div class="border shadow w-75 p-3 row">
+        <div class="col-md-6">
+            <img src="https://png.pngtree.com/png-clipart/20230504/original/pngtree-free-vector-login-concept-illustration-png-image_9140539.png" alt="" class="img-fluid">
+        </div>
+
+        <div class="col-md-6 p-3 d-flex flex-column justify-content-center">
+            <h3 class="text-center mb-3">Login</h3>
+            <form action="" [formGroup]="logForm" (ngSubmit)="submitted($event)">
+                <input type="text" formControlName="email" class="form-control mb-3" placeholder="Enter Email ID" >
+                <div class="text-danger my-2" *ngIf="logForm.controls.email.invalid && logForm.controls.email.touched">
+                    *Invalid email
+                </div>
+
+                <input type="password"  formControlName="password" class="form-control mb-3" placeholder="Enter Password" >
+                <div class="text-danger my-2" *ngIf="logForm.controls.password.invalid && logForm.controls.password.touched">
+                    *Invalid Password
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-warning" [disabled]="logForm.invalid">Login</button>
+                    <a routerLink="/reg">New user </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <i class="fa-solid fa-cart-arrow-down" style="color: #04ff00;"></i>
+            <span class="text-dark ms-2">Ekart</span>
+        </a>
+        <span class="navbar-brand mb-0 h1" *ngIf="logStatus">
+            <i class="fa-solid fa-user"></i>
+            {{username}}
+        </span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active border  shadow rounded me-2" aria-current="page" routerLink="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link border  shadow rounded me-2" href="/wish">
+                    <i class="fa-solid fa-heart" style="color: #ff0000;"></i>
+                    Wishlist    
+                    <span class="badge bg-dark">{{wish}}</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a routerLink="/cart" class="nav-link border shadow rounded">
+                    <i class="fa-solid fa-cart-shopping" style="color: #196af5;"></i>
+                    Cart
+                    <span class="badge bg-dark">{{cart}}</span>
+                </a>
+            </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" #searchInput type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" (click)="getSearchTerms(searchInput.value)"  type="button">Search</button>
+        </form>
+        <a routerLink="/log" class="btn btn-info ms-2 btn-outline-dark" *ngIf="!logStatus">
+            <i class="fa-solid fa-user"></i>
+            Login
+        </a>
+        <button class="btn btn-danger ms-2" *ngIf="logStatus" (click)="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            LogOut
+        </button>
+      </div>
+    </div>
+  </nav>

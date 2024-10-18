@@ -1,0 +1,36 @@
+<div class="container-fluid d-flex justify-content-center align-items-center mt-5 mb-5" style="height: 100%;">
+
+    <div class="border shadow w-75 p-3 row">
+        <div class="col-md-6">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/sign-up-page-illustration-download-in-svg-png-gif-file-formats--application-concept-based-pack-miscellaneous-illustrations-1598253.png?f=webp" alt="" class="img-fluid">
+        </div>
+
+        <div class="col-md-6 p-3 d-flex flex-column justify-content-center">
+            <h3 class="text-center mb-3">Register</h3>
+            <form action="" [formGroup]="regForm" (ngSubmit)="submitted($event)">
+
+                <input type="email" formControlName="email" class="form-control mb-3" placeholder="Enter Email ID" >
+                <div class="text-danger" *ngIf="regForm.controls.email.invalid && regForm.controls.email.touched">
+                    *Invalid email
+                </div>
+
+                <input type="text" formControlName="username" class="form-control mb-3" placeholder="Username" >
+                <div class="text-danger" *ngIf="regForm.controls.username.invalid && regForm.controls.username.touched">
+                    *Invalid username,Need min 3 digit
+                </div>
+
+                <input type="password" formControlName="password" class="form-control mb-3" placeholder="Enter Password" >
+                <div class="text-danger" *ngIf="regForm.controls.password.invalid && regForm.controls.password.touched">
+                    *Invalid password,Need min 3 number
+                </div>
+
+
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary"  [disabled]="regForm.invalid">Register</button>
+                    <a routerLink="/log">Already a user</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

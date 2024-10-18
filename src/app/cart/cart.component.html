@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row mt-5 p-5" *ngIf="cartItem.length>0 ; else elsedata">
+
+        <div class="col-sm-12 col-md-8">
+            <table class="table table-bordered shadow">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Title</td>
+                        <td>Image</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let i of cartItem">
+                        <td>{{i.id}}</td>
+                        <td>{{i.title}}</td>
+                        <td><img src="{{i.image}}" class="img-fluid" width="200px" style="height: 150px;" alt=""></td>
+                        <td>
+                            <button class="btn" (click)="decreaseCartQuantity(i._id)" [disabled]="!offerLink">-</button><br>
+                            <span class="bg-light border ms-2 shadow">{{i.quantity}}</span><br>
+                            <button class="btn" (click)="increaseCartQuantity(i._id)" [disabled]="!offerLink">+</button>
+                        </td>
+                        <td>{{i.price|currency}}</td>
+                        <td>
+                            <button class="btn" (click)="removeItem(i._id)"  [disabled]="!offerLink">
+                                <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-sm-12 col-md-4">
+            <div class="p-2 border border-dark border-3 m-1 shadow">
+                <h5 class="text-info">No. Of Products : <span class="fw-bolder text-danger">{{cartItem.length}}</span>
+                </h5>
+                <h5 class="text-info">Total Amount : <span class="fw-bolder text-danger">{{amount|currency}}</span></h5>
+
+                <div class="border border-primary p-3 shadow mt-5">
+                    <button class="btn btn-dark text-light" (click)="changeOfferStatus()"
+                        *ngIf="!offerStatus">Click Here For Offers</button>
+                    <div *ngIf="offerStatus">
+                        <h6 class="text-center mt-3">Offers</h6>
+                        <img (click)="amount20Percent()" *ngIf="amount>20 && amount<51"
+                            src="https://img.freepik.com/premium-vector/coupon-mockup-with-20-percent-off-discount-voucher-gift-coupon-coupon-promotion-sale-vector_662353-252.jpg"
+                            class="img-fluid" alt="">
+                        <img (click)="amount50Percent()" *ngIf="amount>50 && amount<201"
+                            src="https://img.freepik.com/premium-vector/gift-voucher-template-isolated-gray-background-discount-coupon-50-off-promotion-sale_97458-853.jpg"
+                            class="img-fluid" alt="">
+                        <img (click)="amount70Percent()" *ngIf="amount>201"
+                            src="https://t3.ftcdn.net/jpg/04/80/66/32/360_F_480663287_WyJVE4SWr5kZ6wdZO2alf4vsIm9LA7qV.jpg"
+                            class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid p-3">
+                <div class="btn btn-danger mb-2" (click)="emptyCart()">Empty Cart</div>
+                <button class="btn btn-outline-success" (click)="checkout()">CheckOut Products</button>
+            </div>
+        </div>
+
+    </div>
+    <ng-template #elsedata>
+        <div class="container-fluid p-3">
+            <h3 class="text-center text-danger">No Cart Items!!</h3>
+        </div>
+    </ng-template>
+</div>
