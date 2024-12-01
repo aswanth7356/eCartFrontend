@@ -1,4 +1,34 @@
-# Ekart
+E-Commerce Website
+An e-commerce platform built using Angular, designed to provide a seamless shopping experience with features like wishlist management, cart functionality, and payment integration.
+
+
+Features
+
+  User Features
+  
+    * Wishlist Functionality: Easily add products to your wishlist for future purchases.
+    * Cart Management: Add, update, or remove items from the shopping cart.
+    * Responsive Design: Built with Angular and Bootstrap for a mobile-friendly experience.
+    * Secure Payment Integration: Supports payments via PayPal and other payment options.
+    * API Integration: Fetches product data dynamically from a backend API.
+
+    
+Technologies Used
+
+    * Frontend: Angular, Bootstrap
+    * Backend: API for product data (custom or third-party)
+    * Styling: Responsive design with Bootstrap
+    * Payment Gateway: PayPal integration
+
+    
+Installation
+Prerequisites
+
+    * Node.js
+    * Angular CLI
+
+
+# E commerce
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
